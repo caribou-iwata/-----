@@ -1,7 +1,7 @@
 var originalViewBox; // 元のビューポートの値を保存する変数
 var animationDuration = 500; // アニメーションの期間（ミリ秒）
 var animationFrameId; // アニメーションフレームの ID
-var zoomFactor = 1; // 拡大率を調整する変数
+var zoomFactor = 7; // 拡大率を調整する変数
 
 // SVG 要素が読み込まれたときに実行される処理
 document.getElementById('map').addEventListener("load", function() {

@@ -6,7 +6,7 @@
   <style>
     /* CSS スタイル */
     .map {
-      width: 800px;
+      width: 50vw;
       /* 地図の幅 */
       border: 1px solid #ccc;
     }
@@ -14,7 +14,11 @@
     svg {
       width: 100%;
     }
-
+    .flex-container{
+      display: flex;
+      flex-wrap: wrap;
+      max-width: 800px;
+    }
     .button {
       margin: 5px;
       padding: 5px 10px;
@@ -34,6 +38,7 @@
 </head>
 
 <body>
+  <h1>ズームできる地図</h1>
   <!-- 地図 SVG -->
   <div class="map">
     <svg id="map" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 275.96 265.73">
@@ -471,16 +476,66 @@
     </svg>
   </div>
   <!-- ボタン -->
-  <button class="button" onmouseover="zoomToCountry('Okinawa')" onmouseout="resetZoom()">Hover to Zoom Okinawa</button>
-  <button class="button" onmouseover="zoomToCountry('Kyushu')" onmouseout="resetZoom()">Hover to Zoom Kyushu</button>
-  <button class="button" onmouseover="zoomToCountry('Shikoku')" onmouseout="resetZoom()">Hover to Zoom Shikoku</button>
-  <button class="button" onmouseover="zoomToCountry('Chugoku')" onmouseout="resetZoom()">Hover to Zoom Chugoku</button>
-  <button class="button" onmouseover="zoomToCountry('Kinki')" onmouseout="resetZoom()">Hover to Zoom Kinki</button>
-  <button class="button" onmouseover="zoomToCountry('Chubu')" onmouseout="resetZoom()">Hover to Zoom Chubu</button>
-  <button class="button" onmouseover="zoomToCountry('Kanto')" onmouseout="resetZoom()">Hover to Zoom Kanto</button>
-  <button class="button" onmouseover="zoomToCountry('Tohoku')" onmouseout="resetZoom()">Hover to Zoom Tohoku</button>
-  <button class="button" onmouseover="zoomToCountry('Hokkaido')" onmouseout="resetZoom()">Hover to Zoom Hokkaido</button>
-  <!-- 他の国のボタンも同様に追加 -->
+  <div class="flex-container">
+    <button class="button" onmouseover="zoomToCountry('Hokkaido')" onmouseout="resetZoom()">Hover to Zoom 北海道</button>
+    <button class="button" onmouseover="zoomToCountry('Tohoku')" onmouseout="resetZoom()">Hover to Zoom 東北地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kanto')" onmouseout="resetZoom()">Hover to Zoom 関東地方</button>
+    <button class="button" onmouseover="zoomToCountry('Chubu')" onmouseout="resetZoom()">Hover to Zoom 中部地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kinki')" onmouseout="resetZoom()">Hover to Zoom 近畿地方</button>
+    <button class="button" onmouseover="zoomToCountry('Chugoku')" onmouseout="resetZoom()">Hover to Zoom 中国地方</button>
+    <button class="button" onmouseover="zoomToCountry('Shikoku')" onmouseout="resetZoom()">Hover to Zoom 四国地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kyushu')" onmouseout="resetZoom()">Hover to Zoom 九州地方</button>
+    <button class="button" onmouseover="zoomToCountry('Okinawa')" onmouseout="resetZoom()">Hover to Zoom 沖縄</button>
+  </div>
+  <div class="flex-container">
+    <button class="button" onmouseover="zoomToCountry('Hokkaido')" onmouseout="resetZoom()">Hover to Zoom 北海道</button>
+    <button class="button" onmouseover="zoomToCountry('Aomori')" onmouseout="resetZoom()">Hover to Zoom 青森県</button>
+    <button class="button" onmouseover="zoomToCountry('Iwate')" onmouseout="resetZoom()">Hover to Zoom 岩手県</button>
+    <button class="button" onmouseover="zoomToCountry('Miyagi')" onmouseout="resetZoom()">Hover to Zoom 宮城県</button>
+    <button class="button" onmouseover="zoomToCountry('Akita')" onmouseout="resetZoom()">Hover to Zoom 秋田県</button>
+    <button class="button" onmouseover="zoomToCountry('Yamagata')" onmouseout="resetZoom()">Hover to Zoom 山形県</button>
+    <button class="button" onmouseover="zoomToCountry('Fukushima')" onmouseout="resetZoom()">Hover to Zoom 福島県</button>
+    <button class="button" onmouseover="zoomToCountry('Ibaraki')" onmouseout="resetZoom()">Hover to Zoom 茨城県</button>
+    <button class="button" onmouseover="zoomToCountry('Tochigi')" onmouseout="resetZoom()">Hover to Zoom 栃木県</button>
+    <button class="button" onmouseover="zoomToCountry('Gunma')" onmouseout="resetZoom()">Hover to Zoom 群馬県</button>
+    <button class="button" onmouseover="zoomToCountry('Saitama')" onmouseout="resetZoom()">Hover to Zoom 埼玉県</button>
+    <button class="button" onmouseover="zoomToCountry('Chiba')" onmouseout="resetZoom()">Hover to Zoom 千葉県</button>
+    <button class="button" onmouseover="zoomToCountry('Tokyo')" onmouseout="resetZoom()">Hover to Zoom 東京都</button>
+    <button class="button" onmouseover="zoomToCountry('Kanagawa')" onmouseout="resetZoom()">Hover to Zoom 神奈川県</button>
+    <button class="button" onmouseover="zoomToCountry('Niigata')" onmouseout="resetZoom()">Hover to Zoom 新潟県</button>
+    <button class="button" onmouseover="zoomToCountry('Toyama')" onmouseout="resetZoom()">Hover to Zoom 富山県</button>
+    <button class="button" onmouseover="zoomToCountry('Ishikawa')" onmouseout="resetZoom()">Hover to Zoom 石川県</button>
+    <button class="button" onmouseover="zoomToCountry('Fukui')" onmouseout="resetZoom()">Hover to Zoom 福井県</button>
+    <button class="button" onmouseover="zoomToCountry('Yamanashi')" onmouseout="resetZoom()">Hover to Zoom 山梨県</button>
+    <button class="button" onmouseover="zoomToCountry('Nagano')" onmouseout="resetZoom()">Hover to Zoom 長野県</button>
+    <button class="button" onmouseover="zoomToCountry('Gifu')" onmouseout="resetZoom()">Hover to Zoom 岐阜県</button>
+    <button class="button" onmouseover="zoomToCountry('Shizuoka')" onmouseout="resetZoom()">Hover to Zoom 静岡県</button>
+    <button class="button" onmouseover="zoomToCountry('Aichi')" onmouseout="resetZoom()">Hover to Zoom 愛知県</button>
+    <button class="button" onmouseover="zoomToCountry('Mie')" onmouseout="resetZoom()">Hover to Zoom 三重県</button>
+    <button class="button" onmouseover="zoomToCountry('Shiga')" onmouseout="resetZoom()">Hover to Zoom 滋賀県</button>
+    <button class="button" onmouseover="zoomToCountry('Kyoto')" onmouseout="resetZoom()">Hover to Zoom 京都府</button>
+    <button class="button" onmouseover="zoomToCountry('Osaka')" onmouseout="resetZoom()">Hover to Zoom 大阪府</button>
+    <button class="button" onmouseover="zoomToCountry('Hyogo')" onmouseout="resetZoom()">Hover to Zoom 兵庫県</button>
+    <button class="button" onmouseover="zoomToCountry('Nara')" onmouseout="resetZoom()">Hover to Zoom 奈良県</button>
+    <button class="button" onmouseover="zoomToCountry('Wakayama')" onmouseout="resetZoom()">Hover to Zoom 和歌山県</button>
+    <button class="button" onmouseover="zoomToCountry('Tottori')" onmouseout="resetZoom()">Hover to Zoom 鳥取県</button>
+    <button class="button" onmouseover="zoomToCountry('Shimane')" onmouseout="resetZoom()">Hover to Zoom 島根県</button>
+    <button class="button" onmouseover="zoomToCountry('Okayama')" onmouseout="resetZoom()">Hover to Zoom 岡山県</button>
+    <button class="button" onmouseover="zoomToCountry('Hiroshima')" onmouseout="resetZoom()">Hover to Zoom 広島県</button>
+    <button class="button" onmouseover="zoomToCountry('Yamaguchi')" onmouseout="resetZoom()">Hover to Zoom 山口県</button>
+    <button class="button" onmouseover="zoomToCountry('Tokushima')" onmouseout="resetZoom()">Hover to Zoom 徳島県</button>
+    <button class="button" onmouseover="zoomToCountry('Kagawa')" onmouseout="resetZoom()">Hover to Zoom 香川県</button>
+    <button class="button" onmouseover="zoomToCountry('Ehime')" onmouseout="resetZoom()">Hover to Zoom 愛媛県</button>
+    <button class="button" onmouseover="zoomToCountry('Kochi')" onmouseout="resetZoom()">Hover to Zoom 高知県</button>
+    <button class="button" onmouseover="zoomToCountry('Fukuoka')" onmouseout="resetZoom()">Hover to Zoom 福岡県</button>
+    <button class="button" onmouseover="zoomToCountry('Saga')" onmouseout="resetZoom()">Hover to Zoom 佐賀県</button>
+    <button class="button" onmouseover="zoomToCountry('Nagasaki')" onmouseout="resetZoom()">Hover to Zoom 長崎県</button>
+    <button class="button" onmouseover="zoomToCountry('Kumamoto')" onmouseout="resetZoom()">Hover to Zoom 熊本県</button>
+    <button class="button" onmouseover="zoomToCountry('Oita')" onmouseout="resetZoom()">Hover to Zoom 大分県</button>
+    <button class="button" onmouseover="zoomToCountry('Miyazaki')" onmouseout="resetZoom()">Hover to Zoom 宮崎県</button>
+    <button class="button" onmouseover="zoomToCountry('Kagoshima')" onmouseout="resetZoom()">Hover to Zoom 鹿児島県</button>
+    <button class="button" onmouseover="zoomToCountry('Okinawa')" onmouseout="resetZoom()">Hover to Zoom 沖縄県</button>
+  </div>
 
   <script src="map-zoom.js"></script>
 </body>

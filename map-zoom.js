@@ -7,7 +7,6 @@ var zoomFactor = 7; // 拡大率を調整する変数
 document.getElementById('map').addEventListener("load", function() {
     var svg = document.getElementById('map');
     originalViewBox = svg.getAttribute('viewBox');
-    console.log('Original ViewBox:', originalViewBox);
 });
 
 // JavaScript 関数: マウスがボタンにホバーした時に国にズームする
@@ -15,7 +14,7 @@ function zoomToCountry(countryId) {
     var country = document.getElementById(countryId);
     var bbox = country.getBBox(); // 国のバウンディングボックスを取得
     var svg = document.getElementById('map');
-
+    
     // アニメーションをキャンセル
     cancelAnimationFrame(animationFrameId);
 
@@ -28,10 +27,6 @@ function zoomToCountry(countryId) {
 
     // アニメーション終了時のビューポートの値を設定（元のビューポートよりも小さな値に設定）
     var endValues = [centerX - svg.clientWidth / (2 * zoomFactor), centerY - svg.clientHeight / (2 * zoomFactor), svg.clientWidth / zoomFactor, svg.clientHeight / zoomFactor];
-
-    console.log('Zooming to country:', countryId);
-    console.log('Current ViewBox:', currentValues);
-    console.log('End ViewBox:', endValues);
 
     // アニメーション開始
     animateZoom(svg, currentValues, endValues);
@@ -49,10 +44,6 @@ function resetZoom() {
 
     // アニメーション終了時のビューポートの値を設定（元のビューポートに戻す）
     var endValues = originalViewBox.split(' ').map(parseFloat);
-
-    console.log('Resetting zoom');
-    console.log('Start ViewBox:', startValues);
-    console.log('End ViewBox:', endValues);
 
     // アニメーション開始
     animateZoom(svg, startValues, endValues);

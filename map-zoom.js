@@ -1,6 +1,7 @@
 let originalViewBox; // 元のビューポートの値を保存する変数
 const animationDuration = 500; // アニメーションの期間（ミリ秒）
 let animationFrameId; // アニメーションフレームの ID
+let isZoomFixed = false; // ズームが固定されているかどうかを示すフラグ
 
 // SVG 要素が読み込まれたときに実行される処理
 document.getElementById('map').addEventListener("load", () => {
@@ -10,6 +11,9 @@ document.getElementById('map').addEventListener("load", () => {
 
 // JavaScript 関数: マウスがボタンにホバーした時に国にズームする
 function zoomToCountry(countryId, zoomFactor, className) {
+    // ズームが固定されている場合は処理しない
+    if (isZoomFixed) return;
+
     const country = document.getElementById(countryId);
     const bbox = country.getBBox(); // 国のバウンディングボックスを取得
     const svg = document.getElementById('map');
@@ -31,14 +35,19 @@ function zoomToCountry(countryId, zoomFactor, className) {
     animateZoom(svg, currentValues, endValues);
 
     // クラスの操作
+    if (className) {
         country.classList.add(className);
+    }
 }
 
 // JavaScript 関数: マウスがボタンから離れた時にビューポートを元に戻す
 function resetZoom(countryId, className) {
+    // ズームが固定されている場合は処理しない
+    if (isZoomFixed) return;
+
     const country = document.getElementById(countryId);
 
-    if (country.classList.contains(className)) {
+    if (className && country.classList.contains(className)) {
         country.classList.remove(className);
     }
     const svg = document.getElementById('map');
@@ -55,6 +64,58 @@ function resetZoom(countryId, className) {
     // アニメーション開始
     animateZoom(svg, startValues, endValues);
 }
+// ボタンがクリックされた際の処理
+function zoomToClick(countryId, zoomFactor, className) {
+
+    isZoomFixed = true;
+
+    const country = document.getElementById(countryId);
+    const bbox = country.getBBox(); // 国のバウンディングボックスを取得
+    const svg = document.getElementById('map');
+    
+    // アニメーションをキャンセル
+    cancelAnimationFrame(animationFrameId);
+
+    // 現在のビューポートの値を取得
+    const currentValues = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+
+    // 国の中心座標を計算
+    const centerX = bbox.x + bbox.width / 2;
+    const centerY = bbox.y + bbox.height / 2;
+
+    // アニメーション終了時のビューポートの値を設定（元のビューポートよりも小さな値に設定）
+    const endValues = [centerX - svg.clientWidth / (2 * zoomFactor), centerY - svg.clientHeight / (2 * zoomFactor), svg.clientWidth / zoomFactor, svg.clientHeight / zoomFactor];
+
+    // アニメーション開始
+    animateZoom(svg, currentValues, endValues);
+
+    // クラスの操作
+    if (className) {
+        country.classList.add(className);
+        const svg = document.getElementById('map');
+
+        // アニメーションをキャンセル
+        cancelAnimationFrame(animationFrameId);
+    
+        // アニメーション開始時のビューポートの値を設定
+        const startValues = svg.getAttribute('viewBox').split(' ').map(parseFloat);
+    
+        // アニメーション終了時のビューポートの値を設定（元のビューポートに戻す）
+        const endValues = originalViewBox.split(' ').map(parseFloat);
+    
+        // アニメーション開始
+        animateZoom(svg, startValues, endValues);
+    }
+}
+
+// リセットボタンがクリックされたときの処理
+document.getElementById('resetButton').addEventListener('click', function() {
+    // isZoomFixedをfalseに設定する
+    isZoomFixed = false;
+    
+    // ビューポイントを元に戻す
+    resetZoom();
+});
 
 // アニメーション関数
 function animateZoom(svg, startValues, endValues) {

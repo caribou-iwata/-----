@@ -455,15 +455,16 @@
   </div>
   <!-- ボタン -->
   <div class="flex-container">
-    <button class="button" onmouseover="zoomToCountry('Hokkaido', 4)" onclick="zoomToClick('Hokkaido', 4)" >Hover to Zoom 北海道</button>
-    <button class="button" onmouseover="zoomToCountry('Tohoku' , 5)" onclick="zoomToClick('Tohoku' , 5)" >Hover to Zoom 東北地方</button>
-    <button class="button" onmouseover="zoomToCountry('Kanto', 7)" onclick="zoomToClick('Kanto', 7)" >Hover to Zoom 関東地方</button>
-    <button class="button" onmouseover="zoomToCountry('Chubu' , 7)" onclick="zoomToClick('Chubu' , 7)" >Hover to Zoom 中部地方</button>
-    <button class="button" onmouseover="zoomToCountry('Kinki' , 7)" onclick="zoomToClick('Kinki' , 7)" >Hover to Zoom 近畿地方</button>
-    <button class="button" onmouseover="zoomToCountry('Chugoku' , 6)" onclick="zoomToClick('Chugoku' , 6)" >Hover to Zoom 中国地方</button>
-    <button class="button" onmouseover="zoomToCountry('Shikoku' , 7)" onclick="zoomToClick('Shikoku' , 7)" >Hover to Zoom 四国地方</button>
-    <button class="button" onmouseover="zoomToCountry('Kyushu' , 6)" onclick="zoomToClick('Kyushu' , 6)" >Hover to Zoom 九州地方</button>
-    <button class="button" onmouseover="zoomToCountry('Okinawa' , 8)" onclick="zoomToClick('Okinawa' , 8)" >Hover to Zoom 沖縄</button>
+    <button id="resetButton" class="button">全国</button>
+    <button class="button" onmouseover="zoomToCountry('Hokkaido', 4)" onclick="zoomToClick('Hokkaido', 4)" onmouseout="resetZoom()">Hover to Zoom 北海道</button>
+    <button class="button" onmouseover="zoomToCountry('Tohoku' , 5)" onclick="zoomToClick('Tohoku' , 5)" onmouseout="resetZoom()">Hover to Zoom 東北地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kanto', 7)" onclick="zoomToClick('Kanto', 7)" onmouseout="resetZoom()">Hover to Zoom 関東地方</button>
+    <button class="button" onmouseover="zoomToCountry('Chubu' , 7)" onclick="zoomToClick('Chubu' , 7)" onmouseout="resetZoom()">Hover to Zoom 中部地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kinki' , 7)" onclick="zoomToClick('Kinki' , 7)" onmouseout="resetZoom()">Hover to Zoom 近畿地方</button>
+    <button class="button" onmouseover="zoomToCountry('Chugoku' , 6)" onclick="zoomToClick('Chugoku' , 6)" onmouseout="resetZoom()">Hover to Zoom 中国地方</button>
+    <button class="button" onmouseover="zoomToCountry('Shikoku' , 7)" onclick="zoomToClick('Shikoku' , 7)" onmouseout="resetZoom()">Hover to Zoom 四国地方</button>
+    <button class="button" onmouseover="zoomToCountry('Kyushu' , 6)" onclick="zoomToClick('Kyushu' , 6)" onmouseout="resetZoom()">Hover to Zoom 九州地方</button>
+    <button class="button" onmouseover="zoomToCountry('Okinawa' , 8)" onclick="zoomToClick('Okinawa' , 8)" onmouseout="resetZoom()">Hover to Zoom 沖縄</button>
   </div>
   <!-- <div class="flex-container">
     <button class="button" onmouseover="zoomToCountry('Hokkaido')" onmouseout="resetZoom()">Hover to Zoom 北海道</button>
